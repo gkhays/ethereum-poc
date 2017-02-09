@@ -1,0 +1,13 @@
+# docker-compose up -d
+# --rpcapi "db,eth,net,web3" should be enabled be default
+# --networkdid 1999
+
+geth:
+    container_name: client-go
+    image: ethereum/client-go
+    ports:
+        - "8545:8545"
+        - "30303:30303"
+    volumes:
+        - ./chains:/root/.ethereum
+    command: --identity "IGBlock" --rpc --rpcaddr "0.0.0.0" --rpccorsdomain "*" --rpcapi "db,eth,net,web3" --testnet --nodiscover
